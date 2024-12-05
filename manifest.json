@@ -1,7 +1,7 @@
 {
   "name": "nitro typer",
   "version": "0.0.1",
-  "manifest_version": 2,
+  "manifest_version": 3,
   "description": "auto typer for nitrotype.com typing game",
   "homepage_url": "http://github.com/pfeilbr/nitro-typer-chrome-extension",
   "icons": {
@@ -10,17 +10,18 @@
     "128": "icons/icon128.png"
   },
   "default_locale": "en",
-  "page_action": {
+  "action": {
     "default_icon": "icons/icon19.png",
     "default_title": "page action demo",
     "default_popup": "src/page_action/page_action.html"
   },
-  "permissions": [
+  "permissions": [],
+  "host_permissions": [
     "https://www.nitrotype.com/race"
   ],
   "content_scripts": [
     {
-      "run_at" :"document_end",
+      "run_at": "document_end",
       "matches": [
         "https://www.nitrotype.com/race"
       ],
@@ -29,5 +30,10 @@
       ]
     }
   ],
-  "web_accessible_resources": ["src/inject/script.js"]
+  "web_accessible_resources": [
+    {
+      "resources": ["src/inject/script.js"],
+      "matches": ["https://www.nitrotype.com/race"]
+    }
+  ]
 }
